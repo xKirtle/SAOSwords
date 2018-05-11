@@ -1,7 +1,9 @@
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace Kirtle.Items.Tools
+namespace SAOSwords.Items.Tools
 {
     public class Pickaxe : ModItem
     {

@@ -1,1 +1,1 @@
-Might edit this later, might not.
+This mod is currently adding 2 swords: Elucidator and Lambent Light. Both from SAO series. They are not balanced yet and they deal a lot of damage. Their current recipe is 10 dirt blocks for both of them in a Workbench.

@@ -1,7 +1,7 @@
 ﻿using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace Kirtle.Items.Weapons
+namespace SAOSwords.Items.Weapons
 {
     public class LambentLight : ModItem
     {
