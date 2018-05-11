@@ -1,0 +1,3 @@
+author = Kirtle
+version = 0.1
+displayName = SAO Swords
