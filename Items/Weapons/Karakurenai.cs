@@ -1,25 +1,26 @@
-﻿using Terraria.ID;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace SAOSwords.Items.Weapons
 {
-    public class LambentLight : ModItem
+    public class Karakurenai : ModItem
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Dark Repulser");
-            Tooltip.SetDefault("Crafted by Lisbeth. Indeed, a masterpiece!");
+            DisplayName.SetDefault("Karakurenai");
+            Tooltip.SetDefault("Description.");
         }
+
         public override void SetDefaults()
         {
-            item.damage = 40;
+            item.damage = 50;
             item.melee = true;
-            item.width = 40;
-            item.height = 40;
-            item.useTime = 12;
-            item.useAnimation = 12;
+            item.width = 45;
+            item.height = 41;
+            item.useTime = 19;
+            item.useAnimation = 19;
             item.useStyle = 1;
-            item.knockBack = 2;
+            item.knockBack = 9;
             item.value = 10000;
             item.rare = 2;
             item.UseSound = SoundID.Item1;
@@ -29,7 +30,7 @@ namespace SAOSwords.Items.Weapons
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.SnowBlock, 10);
+            recipe.AddIngredient(ItemID.DirtBlock, 10);
             recipe.AddTile(TileID.WorkBenches);
             recipe.SetResult(this);
             recipe.AddRecipe();
