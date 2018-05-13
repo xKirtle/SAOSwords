@@ -3,7 +3,7 @@
 This mod is currently adding 10 swords: 
 Anneal Blade, Black Iron Great Sword, Dark Repulser, Elucidator, Excalibur, Gram, Ground Gorge, Karakurenai, Lambent Light and Liberator. 
 All from SAO series.
-They are not balanced yet and they are dealing 50 damage each. Their current recipe is 10 dirt blocks in a Workbench Tile.
+They are not balanced yet and their current recipe is 10 dirt blocks in a Workbench Tile.
 
 To do:
   -Edit the recipes.
