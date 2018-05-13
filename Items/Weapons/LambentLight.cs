@@ -7,21 +7,22 @@ namespace SAOSwords.Items.Weapons
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Dark Repulser");
+            DisplayName.SetDefault("Lambent Light");
             Tooltip.SetDefault("Crafted by Lisbeth. Indeed, a masterpiece!");
         }
+
         public override void SetDefaults()
         {
-            item.damage = 40;
+            item.damage = 114;
             item.melee = true;
             item.width = 40;
             item.height = 40;
-            item.useTime = 12;
+            item.useTime = 10;
             item.useAnimation = 12;
             item.useStyle = 1;
             item.knockBack = 2;
             item.value = 10000;
-            item.rare = 2;
+            item.rare = 11;
             item.UseSound = SoundID.Item1;
             item.autoReuse = true;
         }

@@ -13,7 +13,7 @@ namespace SAOSwords.Items.Weapons
 
         public override void SetDefaults()
         {
-            item.damage = 50;
+            item.damage = 37;
             item.melee = true;
             item.width = 45;
             item.height = 41;
@@ -22,7 +22,7 @@ namespace SAOSwords.Items.Weapons
             item.useStyle = 1;
             item.knockBack = 9;
             item.value = 10000;
-            item.rare = 2;
+            item.rare = 4;
             item.UseSound = SoundID.Item1;
             item.autoReuse = true;
         }

@@ -14,7 +14,8 @@ namespace SAOSwords.Items.Weapons
         public override void SetDefaults()
         {
             item.CloneDefaults(ItemID.WarAxeoftheNight);
-            item.damage = 80;
+            item.damage = 76;
+            item.rare = 8;
             item.autoReuse = true;
         }
 

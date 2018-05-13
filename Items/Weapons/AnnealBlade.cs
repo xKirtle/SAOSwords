@@ -8,12 +8,12 @@ namespace SAOSwords.Items.Weapons
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Anneal Blade");
-            Tooltip.SetDefault("Description.");
+            Tooltip.SetDefault("Obtained from a quest.");
         }
 
         public override void SetDefaults()
         {
-            item.damage = 50;
+            item.damage = 16;
             item.melee = true;
             item.width = 45;
             item.height = 41;

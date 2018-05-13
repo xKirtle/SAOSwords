@@ -8,21 +8,21 @@ namespace SAOSwords.Items.Weapons
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Liberator");
-            Tooltip.SetDefault("Description.");
+            Tooltip.SetDefault("Best used with a shield!");
         }
 
         public override void SetDefaults()
         {
-            item.damage = 50;
+            item.damage = 55;
             item.melee = true;
             item.width = 45;
             item.height = 41;
-            item.useTime = 19;
+            item.useTime = 17;
             item.useAnimation = 19;
             item.useStyle = 1;
             item.knockBack = 9;
             item.value = 10000;
-            item.rare = 2;
+            item.rare = 6;
             item.UseSound = SoundID.Item1;
             item.autoReuse = true;
         }

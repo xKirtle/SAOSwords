@@ -8,12 +8,12 @@ namespace SAOSwords.Items.Weapons
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Dark Repulser");
-            Tooltip.SetDefault("Description.");
+            Tooltip.SetDefault("Crafted by Lisbeth. Indeed, a masterpiece!");
         }
 
         public override void SetDefaults()
         {
-            item.damage = 50;
+            item.damage = 88;
             item.melee = true;
             item.width = 45;
             item.height = 41;
@@ -22,7 +22,7 @@ namespace SAOSwords.Items.Weapons
             item.useStyle = 1;
             item.knockBack = 9;
             item.value = 10000;
-            item.rare = 2;
+            item.rare = 9;
             item.UseSound = SoundID.Item1;
             item.autoReuse = true;
         }
