@@ -30,7 +30,10 @@ namespace SAOSwords.Items.Weapons
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.DirtBlock, 10);
+            recipe.AddIngredient(ItemID.StoneBlock, 20);
+            recipe.AddIngredient(ItemID.ChlorophyteBar, 10);
+            recipe.AddIngredient(ItemID.GoldBar, 60);
+            recipe.AddIngredient(ItemID.Sapphire, 10);
             recipe.AddTile(TileID.WorkBenches);
             recipe.SetResult(this);
             recipe.AddRecipe();

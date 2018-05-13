@@ -8,7 +8,7 @@ namespace SAOSwords.Items.Weapons
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Ground Gorge");
-            Tooltip.SetDefault("Description.");
+            Tooltip.SetDefault("A war Axe.");
         }
 
         public override void SetDefaults()
@@ -23,7 +23,8 @@ namespace SAOSwords.Items.Weapons
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.DirtBlock, 10);
+            recipe.AddIngredient(ItemID.StoneBlock, 15);
+            recipe.AddIngredient(ItemID.MeteoriteBar, 8);
             recipe.AddTile(TileID.WorkBenches);
             recipe.SetResult(this);
             recipe.AddRecipe();

@@ -8,7 +8,7 @@ namespace SAOSwords.Items.Weapons
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Karakurenai");
-            Tooltip.SetDefault("Description.");
+            Tooltip.SetDefault("Behaves like a Katana but it won't ever break.");
         }
 
         public override void SetDefaults()
@@ -30,7 +30,15 @@ namespace SAOSwords.Items.Weapons
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.DirtBlock, 10);
+            recipe.AddIngredient(ItemID.StoneBlock, 15);
+            recipe.AddIngredient(ItemID.SilverBar, 6);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.SetResult(this);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(mod);
+            recipe.AddIngredient(ItemID.StoneBlock, 15);
+            recipe.AddIngredient(ItemID.TungstenBar, 6);
             recipe.AddTile(TileID.WorkBenches);
             recipe.SetResult(this);
             recipe.AddRecipe();

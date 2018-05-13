@@ -8,12 +8,12 @@ namespace SAOSwords.Items.Weapons
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Black Iron Great Sword");
-            Tooltip.SetDefault("Description.");
+            Tooltip.SetDefault("Bought from a merchant.");
         }
 
         public override void SetDefaults()
         {
-            item.damage = 37;
+            item.damage = 45;
             item.melee = true;
             item.width = 45;
             item.height = 41;
@@ -27,13 +27,10 @@ namespace SAOSwords.Items.Weapons
             item.autoReuse = true;
         }
 
-        public override void AddRecipes()
+        public override void AddRecipes() 
         {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.DirtBlock, 10);
-            recipe.AddTile(TileID.WorkBenches);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
+            //SOLD AT THE MERCHANT ?PERHAPS && AND DROPPED FROM 
         }
     }
 }
+

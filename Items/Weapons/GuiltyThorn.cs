@@ -13,7 +13,7 @@ namespace SAOSwords.Items.Weapons
 
         public override void SetDefaults()
         {
-            item.damage = 32;
+            item.damage = 42;
             item.melee = true;
             item.width = 45;
             item.height = 41;
@@ -34,10 +34,18 @@ namespace SAOSwords.Items.Weapons
             target.AddBuff(BuffID.OnFire, 60);
         } */
 
-        public override void AddRecipes()
+        public override void AddRecipes() //ADD ROTTEN CHUNCK WHEN THE SWORD HAS A POISONING EFFECT
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.DirtBlock, 10);
+            recipe.AddIngredient(ItemID.StoneBlock, 15);
+            recipe.AddIngredient(ItemID.CrimtaneBar, 8);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.SetResult(this);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(mod);
+            recipe.AddIngredient(ItemID.StoneBlock, 15);
+            recipe.AddIngredient(ItemID.DemoniteBar, 8);
             recipe.AddTile(TileID.WorkBenches);
             recipe.SetResult(this);
             recipe.AddRecipe();
