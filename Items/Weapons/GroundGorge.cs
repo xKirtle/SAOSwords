@@ -16,6 +16,7 @@ namespace SAOSwords.Items.Weapons
             item.CloneDefaults(ItemID.WarAxeoftheNight);
             item.damage = 76;
             item.rare = 8;
+            item.knockBack = 12;
             item.autoReuse = true;
         }
 

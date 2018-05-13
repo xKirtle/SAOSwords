@@ -17,10 +17,10 @@ namespace SAOSwords.Items.Weapons
             item.melee = true;
             item.width = 45;
             item.height = 41;
-            item.useTime = 14;
+            item.useTime = 12;
             item.useAnimation = 19;
             item.useStyle = 1;
-            item.knockBack = 9;
+            item.knockBack = 3;
             item.value = 10000;
             item.rare = 3;
             item.UseSound = SoundID.Item1;

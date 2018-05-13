@@ -20,7 +20,7 @@ namespace SAOSwords.Items.Weapons
             item.useTime = 19;
             item.useAnimation = 19;
             item.useStyle = 1;
-            item.knockBack = 6;
+            item.knockBack = 7;
             item.value = 10000;
             item.rare = 10;
             item.UseSound = SoundID.Item1;
