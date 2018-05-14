@@ -11,13 +11,16 @@ Use this mod with Recipe Browser as I didn't setup a Wiki yet.
 To do:
   -Add particles and effects to the weapons.
 
+V0.3.2 Changelog:
+  -Black Iron Great Sword only has a chance of drop of 4%.
+
 V0.3.1 Changelog:
   -Added Gores (Monsters death particles).
   -Fixed some swords.
 
 V0.3 Changelog:
   -Added the Dire Wolf (Early game) Monster.
-  -Dire Wolf drops the Black iron Great Sword with 9% of drop chance (Best Pre-Hardmode sword).
+  -Dire Wolf drops the Black Iron Great Sword with 9% of drop chance (Best Pre-Hardmode sword).
   -Edited the recipes.
 
 V0.2.2 Changelog:
@@ -34,4 +37,5 @@ V0.2 Changelog:
 
 V0.1 Changelog:
   -Added 2 Swords: Elucidator and Lambent Light.
+
 
