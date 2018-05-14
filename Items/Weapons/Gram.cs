@@ -8,7 +8,7 @@ namespace SAOSwords.Items.Weapons
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Gram");
-            Tooltip.SetDefault("Demonic Sword. The sencond strongest legendary sword in ALO.");
+            Tooltip.SetDefault("Demonic Sword. The sencond strongest legendary sword in ALO");
         }
 
         public override void SetDefaults()

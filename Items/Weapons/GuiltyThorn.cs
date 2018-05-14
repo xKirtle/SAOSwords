@@ -8,7 +8,7 @@ namespace SAOSwords.Items.Weapons
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Guilty Thorn");
-            Tooltip.SetDefault("Made out of black metal.");
+            Tooltip.SetDefault("Made out of black metal");
         }
 
         public override void SetDefaults()

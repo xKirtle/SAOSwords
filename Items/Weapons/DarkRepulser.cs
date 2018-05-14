@@ -8,7 +8,7 @@ namespace SAOSwords.Items.Weapons
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Dark Repulser");
-            Tooltip.SetDefault("Crafted by Lisbeth. Indeed, a masterpiece!");
+            Tooltip.SetDefault("Crafted by Lisbeth. Indeed, a masterpiece");
         }
 
         public override void SetDefaults()

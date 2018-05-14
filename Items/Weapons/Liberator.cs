@@ -8,7 +8,7 @@ namespace SAOSwords.Items.Weapons
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Liberator");
-            Tooltip.SetDefault("Best used with a shield!");
+            Tooltip.SetDefault("Best used with a shield");
         }
 
         public override void SetDefaults()

@@ -8,7 +8,7 @@ namespace SAOSwords.Items.Weapons
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Karakurenai");
-            Tooltip.SetDefault("Behaves like a Katana but it won't ever break.");
+            Tooltip.SetDefault("Behaves like a Katana but it won't ever break");
         }
 
         public override void SetDefaults()

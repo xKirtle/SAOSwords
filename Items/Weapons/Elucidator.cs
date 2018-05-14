@@ -8,7 +8,7 @@ namespace SAOSwords.Items.Weapons
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Elucidator");
-            Tooltip.SetDefault("Dropped from a demonic monster at the 50th floor.");
+            Tooltip.SetDefault("Dropped from a demonic monster at the 50th floor");
         }
 
         public override void SetDefaults()

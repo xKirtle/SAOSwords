@@ -8,7 +8,7 @@ namespace SAOSwords.Items.Weapons
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Ground Gorge");
-            Tooltip.SetDefault("A war Axe.");
+            Tooltip.SetDefault("A war Axe");
         }
 
         public override void SetDefaults()

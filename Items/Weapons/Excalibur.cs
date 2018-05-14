@@ -8,7 +8,7 @@ namespace SAOSwords.Items.Weapons
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Excalibur");
-            Tooltip.SetDefault("Holy Sword. The strongest legendary sword in ALO.");
+            Tooltip.SetDefault("Holy Sword. The strongest legendary sword in ALO");
         }
 
         public override void SetDefaults()
