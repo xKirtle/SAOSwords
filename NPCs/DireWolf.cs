@@ -35,7 +35,7 @@ namespace SAOSwords.NPCs
 
         public override void NPCLoot()
 		{
-			if (Main.rand.Next(12) == 0)
+			if (Main.rand.Next(26) == 0)
             {
 	            Item.NewItem(npc.getRect(), mod.ItemType("BlackIronGreatSword"), 1);
             }
