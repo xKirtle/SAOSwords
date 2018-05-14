@@ -4,10 +4,14 @@ And 1 Monster:
 DireWolf
 
 Everything is from SAO series.
-Swords current recipe is 10 dirt blocks in a Workbench Tile.
+Use this mod with Recipe Browser as I didn't setup a Wiki yet.
 
 To do:
   -Add particles and effects to the weapons.
+
+V0.3.1 Changelog:
+  -Added Gores (Monsters death particles).
+  -Fixed some swords.
 
 V0.3 Changelog:
   -Added the Dire Wolf (Early game) Monster.

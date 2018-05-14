@@ -8,7 +8,7 @@ namespace SAOSwords.Items.Weapons
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Black Iron Great Sword");
-            Tooltip.SetDefault("Bought from a merchant.");
+            Tooltip.SetDefault("Dropped by a furious beast.");
         }
 
         public override void SetDefaults()

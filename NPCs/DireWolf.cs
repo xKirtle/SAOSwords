@@ -1,3 +1,5 @@
+//This NPC config is credited to Jofairden as the layout of the config was taken from his AlphaWolf!
+
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -28,7 +30,7 @@ namespace SAOSwords.NPCs
 			npc.npcSlots = 1f;
 			npc.HitSound = SoundID.NPCHit6;
 			npc.DeathSound = SoundID.NPCDeath5;
-			npc.value = Item.buyPrice(0, 0, 4, 0);
+            npc.value = Item.buyPrice(0,0,15,0);
 		}
 
         public override void NPCLoot()
@@ -46,17 +48,15 @@ namespace SAOSwords.NPCs
 				for (int k = 0; k < 20; k++)
 					Dust.NewDust(npc.position, npc.width, npc.height, 151, 2.5f * hitDirection, -2.5f, 0, default(Color), 0.7f);
 
-				/*for(int i = 0; i < 2; ++i)
+				for(int i = 0; i < 3; i++)
 				{
-					Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot($"Gores/WolfGore{i+1}"), 1f);
-					Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot($"Gores/AlphaWolfGore{i+1}"), 1f);
-				}*/
+					Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/DireWolf/DireWolfGore" + (i + 1)), 1f);
+				}
 			}
 		}
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
-		{
-			// we would like this npc to spawn in the overworld.
+        {
 			return SpawnCondition.OverworldNight.Chance * 0.1f;
 		}
     }
