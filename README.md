@@ -8,37 +8,3 @@ DireWolf
 Everything is from SAO series.
 Use this mod with Recipe Browser as I didn't setup a Wiki yet.
 
-To do:
-  -Add particles and effects to the weapons.
-
-V0.3.3 Changelog:
-  -Fixed some recipes.
-  -Added a homepage.
-
-V0.3.2 Changelog:
-  -Black Iron Great Sword only has a chance of drop of 4%.
-
-V0.3.1 Changelog:
-  -Added Gores (Monsters death particles).
-  -Fixed some swords.
-
-V0.3 Changelog:
-  -Added the Dire Wolf (Early game) Monster.
-  -Dire Wolf drops the Black Iron Great Sword with 9% of drop chance (Best Pre-Hardmode sword).
-  -Edited the recipes.
-
-V0.2.2 Changelog:
-  -Added 1 Sword: Guilty Thorn.
-  -Fixed the knockback of each sword.
-  -Added an icon to the mod.
-  -Added a test Mob to drop certain weapons.
-
-V0.2.1 Changelog:
-  -Edited the damage value of each sword and added the corresponding rarity.
-
-V0.2 Changelog:
-  -Added 8 Swords: Anneal Blade, Black Iron Great Sword, Dark Repulser, Excalibur, Gram, Ground Gorge, Karakurenai and Liberator.
-
-V0.1 Changelog:
-  -Added 2 Swords: Elucidator and Lambent Light.
-
