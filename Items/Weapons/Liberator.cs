@@ -38,7 +38,7 @@ namespace SAOSwords.Items.Weapons
 
             recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.StoneBlock, 20);
-            recipe.AddIngredient(ItemID.DemoniteBar, 8);
+            recipe.AddIngredient(ItemID.PalladiumBar, 8);
             recipe.AddTile(TileID.WorkBenches);
             recipe.SetResult(this);
             recipe.AddRecipe();
