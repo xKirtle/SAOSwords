@@ -31,7 +31,7 @@ namespace SAOSwords.Items.Weapons
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.StoneBlock, 20);
-            recipe.AddIngredient(ItemID.ChlorophyteBar, 10);
+            recipe.AddIngredient(ItemID.SpectreBar, 12);
             recipe.AddTile(TileID.WorkBenches);
             recipe.SetResult(this);
             recipe.AddRecipe();

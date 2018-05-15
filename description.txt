@@ -9,6 +9,10 @@ Use this mod with Recipe Browser as I didn't setup a Wiki yet.
 To do:
   -Add particles and effects to the weapons.
 
+V0.3.3 Changelog:
+  -Fixed some recipes.
+  -Added a homepage.
+
 V0.3.2 Changelog:
   -Black Iron Great Sword only has a chance of drop of 4%.
 
