@@ -25,7 +25,8 @@ namespace SAOSwords
         {
 
             Item item = new Item();
-            item.SetDefaults(mod.ItemType("AnnealBlade"));
+            //item.SetDefaults(mod.ItemType("AnnealBlade"));
+            item.SetDefaults(ItemID.MagicMirror);
             item.stack = 1;
             items.Add(item);
         }
