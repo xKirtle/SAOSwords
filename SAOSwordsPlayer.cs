@@ -4,29 +4,29 @@ using Terraria.ID;
 using System.Collections.Generic;
 using System.IO;
 using Microsoft.Xna.Framework.Graphics;
+using SAOSwords.Items.Quest;
 
 namespace SAOSwords
 {
     public class SAOSwordsPlayer : ModPlayer
     {
-        public bool SAOSwordsPet = false;
+        public bool Pet = false;
         public bool summonSpiritMinion = false;
 
         public bool zoneBiome = false;
 
         public override void ResetEffects()
         {
-            SAOSwordsPet = false;
+            Pet = false;
             summonSpiritMinion = false;
         }
 
         public override void SetupStartInventory(IList<Item> items)
         {
-            items.Clear();
 
             Item item = new Item();
-            item.SetDefaults(mod.ItemType("SAOSwordsWood"));
-            item.stack = 5;
+            item.SetDefaults(mod.ItemType("AnnealBlade"));
+            item.stack = 1;
             items.Add(item);
         }
 
@@ -69,7 +69,5 @@ namespace SAOSwords
         {
             return null;
         }
-
-
     }
 }
