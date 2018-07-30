@@ -11,6 +11,10 @@ Use this mod with Recipe Browser as I didn't setup a Wiki yet.
 To do:
   -Add particles and effects to the weapons.
 
+v0.3.3.1
+  -Player will no longer start a fresh character without items.
+  -Recipes and weapon selling prices have been fully fixed and are now "fair" to play in a "Vanilla" experience.
+
 V0.3.3 Changelog:
   -Fixed some recipes.
   -Added a homepage.
