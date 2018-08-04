@@ -1,6 +1,7 @@
 ﻿using Terraria;
 using Terraria.ModLoader;
 using Terraria.ID;
+using Windows;
 
 namespace SAOSwords.Items
 {
@@ -9,7 +10,7 @@ namespace SAOSwords.Items
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Yui");
-            Tooltip.SetDefault("Summons Yui");
+            Tooltip.SetDefault("Summons Yui \nNOT RELEASED YET SINCE SPRITE ISN'T MINE\nTHIS ITEM IS NOT CRAFTABLE");
         }
 
         public override void SetDefaults()
@@ -26,5 +27,7 @@ namespace SAOSwords.Items
                 player.AddBuff(item.buffType, 3600, true);
             }
         }
+
+        // No crafting cause I don't have a sprite of my own yet & not released yet
     }
 }

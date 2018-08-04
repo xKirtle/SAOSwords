@@ -25,7 +25,7 @@ namespace SAOSwords.Items.Weapons.Bows
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Fairy Bow");
-            Tooltip.SetDefault("");
+            Tooltip.SetDefault("NOT RELEASED YET\nTHIS ITEM IS NOT CRAFTABLE");
         }
 
         public override Vector2? HoldoutOffset()
@@ -33,13 +33,13 @@ namespace SAOSwords.Items.Weapons.Bows
             return new Vector2(10, 2);
         }
 
-        public override void AddRecipes()
-        {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.StoneBlock, 10);
-            recipe.AddTile(TileID.WorkBenches);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
-        }
+        /* public override void AddRecipes()
+         {
+             ModRecipe recipe = new ModRecipe(mod);
+             recipe.AddIngredient(ItemID.StoneBlock, 10);
+             recipe.AddTile(TileID.WorkBenches);
+             recipe.SetResult(this);
+             recipe.AddRecipe();
+         } */ // not released yet
     }
 }

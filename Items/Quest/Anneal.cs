@@ -14,35 +14,59 @@ using Microsoft.Xna.Framework;
 namespace SAOSwords.Items.Quest
 {
     public class Anneal : ModItem
-    {
+    { 
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("First Quest");
-            Tooltip.SetDefault("Kill some Slimes!");
+            Tooltip.SetDefault("Swing the item to start your quest!");
         }
 
         public override void SetDefaults()
         {
-            item.damage = 0;
-            item.melee = true;
             item.width = 45;
             item.height = 41;
             item.useTime = 19;
             item.useAnimation = 19;
             item.useStyle = 1;
-            item.knockBack = 0;
             item.value = 0;
             item.rare = 9;
             item.UseSound = SoundID.Item4;
             item.autoReuse = false;
+            item.noMelee = true;
+            item.consumable = true;
+            item.buffType = mod.BuffType("AnnealBuff");
+            item.buyOnce = true;
+        }
+
+        public override void UseStyle(Player player)
+        {
+            if (player.whoAmI == Main.myPlayer && player.itemTime == 0)
+            {
+                player.AddBuff(item.buffType, 999999, true);
+                Main.NewText("Kill 10 Green Slimes to earn your reward!");
+            }
         }
 
         public override void MeleeEffects(Player player, Rectangle hitbox)
         {
-            base.MeleeEffects(player, hitbox);
-            player.QuickSpawnItem(mod.ItemType("AnnealBlade"));
+            Tooltip.SetDefault("Kill some Slimes!\nNOT RELEASED YET\nTHIS ITEM IS NOT CRAFTABLE");
         }
 
+        public class QuestSlime : GlobalItem // Makes so the code below works for all melee weapons
+        {
+            public override void OnHitNPC(Item item, Player player, NPC target, int damage, float knockBack, bool crit)
+            {
+                int bSlime = NPCID.BlueSlime;
+                int bannerID = Item.NPCtoBanner(bSlime);
+                if (NPC.killCount[bannerID] >= 10 && target.type == NPCID.BlueSlime && target.life <= 0 && player.HasBuff(mod.BuffType("AnnealBuff")))
+                {
+                    Item.NewItem(target.getRect(), mod.ItemType("AnnealBlade"), 1);
+                    player.ClearBuff(mod.BuffType("AnnealBuff"));
+                    player.GetModPlayer<SAOSwordsPlayer>(mod).Anneal = false;
+                    NPC.killCount[bannerID] -= NPC.killCount[bannerID]; // Resets the Blue Slime killCount to 0
+                }
+            }
+        }
     }
 }
 

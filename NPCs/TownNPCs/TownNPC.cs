@@ -6,8 +6,9 @@ using Terraria.ID;
 using Terraria;
 using Terraria.ModLoader;
 using SAOSwords.Items.Weapons.Swords;
+using SAOSwords.Items.Quest;
 
-namespace SAOSwords.NPCs.TownNPCs            //We need this to basically indicate the folder where it is to be read from, so you the texture will load correctly
+namespace SAOSwords.NPCs.TownNPCs
 {
     public class TownNPC : ModNPC
     {
@@ -18,37 +19,33 @@ namespace SAOSwords.NPCs.TownNPCs            //We need this to basically indicat
 
         public override void SetDefaults()
         {
-            npc.townNPC = true; //This defines if the npc is a town Npc or not
-            npc.friendly = true;  //this defines if the npc can hur you or not()
-            npc.width = 18; //the npc sprite width
-            npc.height = 46;  //the npc sprite height
-            npc.aiStyle = 7; //this is the npc ai style, 7 is Pasive Ai
-            npc.defense = 25;  //the npc defense
-            npc.lifeMax = 250;// the npc life
-            npc.HitSound = SoundID.NPCHit1;  //the npc sound when is hit
-            npc.DeathSound = SoundID.NPCDeath1;  //the npc sound when he dies
-            npc.knockBackResist = 0.5f;  //the npc knockback resistance
-            Main.npcFrameCount[npc.type] = 25; //this defines how many frames the npc sprite sheet has
+            npc.townNPC = true;
+            npc.friendly = true;
+            npc.width = 18;
+            npc.height = 46;
+            npc.aiStyle = 7;
+            npc.defense = 25;
+            npc.lifeMax = 250;
+            npc.HitSound = SoundID.NPCHit1;
+            npc.DeathSound = SoundID.NPCDeath1;
+            npc.knockBackResist = 0.5f;
+            Main.npcFrameCount[npc.type] = 25;
             NPCID.Sets.ExtraFramesCount[npc.type] = 9;
             NPCID.Sets.AttackFrameCount[npc.type] = 4;
-            NPCID.Sets.DangerDetectRange[npc.type] = 150; //this defines the npc danger detect range
-            NPCID.Sets.AttackType[npc.type] = 3; //this is the attack type,  0 (throwing), 1 (shooting), or 2 (magic). 3 (melee) 
-            NPCID.Sets.AttackTime[npc.type] = 30; //this defines the npc attack speed
-            NPCID.Sets.AttackAverageChance[npc.type] = 10;//this defines the npc atack chance
-            NPCID.Sets.HatOffsetY[npc.type] = 4; //this defines the party hat position
-            animationType = NPCID.Angler;  //this copy the guide animation
+            NPCID.Sets.DangerDetectRange[npc.type] = 150;
+            NPCID.Sets.AttackType[npc.type] = 3; //0 (throwing), 1 (shooting), or 2 (magic). 3 (melee) 
+            NPCID.Sets.AttackTime[npc.type] = 20;
+            NPCID.Sets.AttackAverageChance[npc.type] = 10;
+            NPCID.Sets.HatOffsetY[npc.type] = 4;
+            animationType = NPCID.Guide;
         }
-        public override bool CanTownNPCSpawn(int numTownNPCs, int money) //Whether or not the conditions have been met for this town NPC to be able to move into town.
+        public override bool CanTownNPCSpawn(int numTownNPCs, int money)
         {
-            if (NPC.downedBoss1)  //so after the EoC is killed
-            {
-                return true;
-            }
-            return false;
+            return true;
         }
         public override bool CheckConditions(int left, int right, int top, int bottom)    //Allows you to define special conditions required for this town NPC's house
         {
-            return true;  //so when a house is available the npc will  spawn
+            return true;
         }
         public override string TownNPCName()     //Allows you to give this town NPC any name when it spawns
         {
@@ -86,27 +83,23 @@ namespace SAOSwords.NPCs.TownNPCs            //We need this to basically indicat
             }
         }
 
-        public override void SetupShop(Chest shop, ref int nextSlot)       //Allows you to add items to this town NPC's shop. Add an item by setting the defaults of shop.item[nextSlot] then incrementing nextSlot.
+        public override void SetupShop(Chest shop, ref int nextSlot)
         {
-            if (NPC.downedSlimeKing)   //this make so when the king slime is killed the town npc will sell this
-            {
-                shop.item[nextSlot].SetDefaults(ItemID.RecallPotion);  //an example of how to add a vanilla terraria item
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(ItemID.WormholePotion);
-                nextSlot++;
-            }
-            if (NPC.downedBoss3)   //this make so when Skeletron is killed the town npc will sell this
-            {
-                shop.item[nextSlot].SetDefaults(ItemID.BookofSkulls);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(ItemID.ClothierVoodooDoll);
-                nextSlot++;
-            }
-            shop.item[nextSlot].SetDefaults(ItemID.IronskinPotion);
+            shop.item[nextSlot].SetDefaults(mod.ItemType("Anneal"));
             nextSlot++;
-            shop.item[nextSlot].SetDefaults(mod.ItemType("CustomSword"));  //this is an example of how to add a modded item
-            nextSlot++;
-
+            //------------------------------------------------------------------------------------------
+            //shop.item[nextSlot].SetDefaults(ItemID.WormholePotion);
+            //nextSlot++;
+            //if (NPC.downedBoss3)   //this make so when Skeletron is killed the town npc will sell this
+            //{
+            //    shop.item[nextSlot].SetDefaults(ItemID.BookofSkulls);
+            //    nextSlot++;
+            //    shop.item[nextSlot].SetDefaults(ItemID.ClothierVoodooDoll);
+            //    nextSlot++;
+            //}
+            //shop.item[nextSlot].SetDefaults(ItemID.IronskinPotion);
+            //nextSlot++;
+            //------------------------------------------------------------------------------------------
         }
 
         public override string GetChat()       //Allows you to give this town NPC a chat message when a player talks to it.

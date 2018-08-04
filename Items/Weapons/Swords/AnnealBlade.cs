@@ -27,7 +27,7 @@ namespace SAOSwords.Items.Weapons.Swords
             item.autoReuse = true;
         }
 
-        public override void AddRecipes()
+        /*public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.StoneBlock, 10);
@@ -42,6 +42,6 @@ namespace SAOSwords.Items.Weapons.Swords
             recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this);
             recipe.AddRecipe();
-        }
+        }*/
     }
 }
