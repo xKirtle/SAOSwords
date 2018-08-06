@@ -43,12 +43,13 @@ namespace SAOSwords.Items.Quest
             if (player.whoAmI == Main.myPlayer && player.itemTime == 0)
             {
                 player.AddBuff(item.buffType, 999999, true);
-                Main.NewText("Kill 10 Green Slimes to earn your reward!");
+                Main.NewText("Kill 5 Blue Slimes to earn your reward!", 0, 191, 255);
+                Main.NewText("P.S.: They're usually under the florest in the underground!", 144, 238, 144);
             }
         }
 
         public override void MeleeEffects(Player player, Rectangle hitbox)
-        {
+        {S
             Tooltip.SetDefault("Kill some Slimes!\nNOT RELEASED YET\nTHIS ITEM IS NOT CRAFTABLE");
         }
 
@@ -58,7 +59,7 @@ namespace SAOSwords.Items.Quest
             {
                 int bSlime = NPCID.BlueSlime;
                 int bannerID = Item.NPCtoBanner(bSlime);
-                if (NPC.killCount[bannerID] >= 10 && target.type == NPCID.BlueSlime && target.life <= 0 && player.HasBuff(mod.BuffType("AnnealBuff")))
+                if (NPC.killCount[bannerID] >= 5 && target.type == NPCID.BlueSlime && target.life <= 0 && player.HasBuff(mod.BuffType("AnnealBuff")))
                 {
                     Item.NewItem(target.getRect(), mod.ItemType("AnnealBlade"), 1);
                     player.ClearBuff(mod.BuffType("AnnealBuff"));

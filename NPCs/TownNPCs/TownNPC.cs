@@ -70,8 +70,8 @@ namespace SAOSwords.NPCs.TownNPCs
 
         public override void SetChatButtons(ref string button, ref string button2)  //Allows you to set the text for the buttons that appear on this town NPC's chat window. 
         {
-            button = "Buy Potions";   //this defines the buy button name
-            button2 = "Quest";
+            button = "Free Quest";   //this defines the buy button name
+            //button2 = "Quest";
         }
 
         public override void OnChatButtonClicked(bool firstButton, ref bool openShop) //Allows you to make something happen whenever a button is clicked on this town NPC's chat window. The firstButton parameter tells whether the first button or second button (button and button2 from SetChatButtons) was clicked. Set the shop parameter to true to open this NPC's shop.
@@ -104,26 +104,29 @@ namespace SAOSwords.NPCs.TownNPCs
 
         public override string GetChat()       //Allows you to give this town NPC a chat message when a player talks to it.
         {
+            int nurseNPC = NPC.FindFirstNPC(NPCID.Nurse);
+            if (nurseNPC >= 0 && Main.rand.Next(4) == 0)
+            {
+                return "Isn't it a beautiful day? I wonder how's " + Main.npc[nurseNPC].GivenName + " today, sigh..";
+            }
             int wizardNPC = NPC.FindFirstNPC(NPCID.Wizard);   //this make so when this npc is close to Wizard
             if (wizardNPC >= 0 && Main.rand.Next(4) == 0)    //has 1 in 3 chance to show this message
             {
-                return "Yes " + Main.npc[wizardNPC].GivenName + " is a wizard.";
+                return "Yes " + Main.npc[wizardNPC].GivenName + " is a wizard, just like Harry!";
             }
             int guideNPC = NPC.FindFirstNPC(NPCID.Guide); //this make so when this npc is close to the Guide
-            if (guideNPC >= 0 && Main.rand.Next(4) == 0) //has 1 in 3 chance to show this message
+            /*if (guideNPC >= 0 && Main.rand.Next(4) == 0) //has 1 in 3 chance to show this message
             {
                 return "Sure you can ask " + Main.npc[guideNPC].GivenName + " how to make an Ironskin potion or you can buy it from me..hehehe.";
-            }
-            switch (Main.rand.Next(4))    //this are the messages when you talk to the npc
+            }*/
+            switch (Main.rand.Next(3))    //this are the messages when you talk to the npc
             {
                 case 0:
-                    return "You wanna buy something?";
+                    return "What do you want?";
                 case 1:
-                    return "What you want?";
+                    return "I'm the most serious guy here but don't tell " + Main.npc[guideNPC].GivenName + " that I said that!!";
                 case 2:
-                    return "I like this house.";
-                case 3:
-                    return "<I'm blue dabu di dabu dai>....OH HELLO THERE..";
+                    return "Would you do me a favor? I have a Quest for you.";
                 default:
                     return "Go kill Skeletron.";
 
