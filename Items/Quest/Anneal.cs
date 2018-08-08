@@ -1,20 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria;
+﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using SAOSwords.Items;
-using SAOSwords.Items.Quest;
 using Microsoft.Xna.Framework;
 
 namespace SAOSwords.Items.Quest
 {
     public class Anneal : ModItem
-    { 
+    {
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("First Quest");
@@ -49,25 +41,70 @@ namespace SAOSwords.Items.Quest
         }
 
         public override void MeleeEffects(Player player, Rectangle hitbox)
-        {S
+        {
             Tooltip.SetDefault("Kill some Slimes!\nNOT RELEASED YET\nTHIS ITEM IS NOT CRAFTABLE");
         }
 
         public class QuestSlime : GlobalItem // Makes so the code below works for all melee weapons
         {
+            public override bool InstancePerEntity
+            {
+                get
+                {
+                    return true;
+                }
+            }
+
+            public override bool CloneNewInstances
+            {
+                get
+                {
+                    return true;
+                }
+            }
+
+            int SlimeKillsLeftUntilAnnealReward = 5; // This line is causing my error
+
             public override void OnHitNPC(Item item, Player player, NPC target, int damage, float knockBack, bool crit)
             {
                 int bSlime = NPCID.BlueSlime;
                 int bannerID = Item.NPCtoBanner(bSlime);
-                if (NPC.killCount[bannerID] >= 5 && target.type == NPCID.BlueSlime && target.life <= 0 && player.HasBuff(mod.BuffType("AnnealBuff")))
+                if (target.type == bSlime && target.life <= 0 && SlimeKillsLeftUntilAnnealReward >= 1)
                 {
-                    Item.NewItem(target.getRect(), mod.ItemType("AnnealBlade"), 1);
+                    SlimeKillsLeftUntilAnnealReward -= 1;
+                    Main.NewText("You still need to kill more " + SlimeKillsLeftUntilAnnealReward + " Blue Slimes!");
+                }
+                else if (target.type == bSlime && player.HasBuff(mod.BuffType("AnnealBuff")) && SlimeKillsLeftUntilAnnealReward == 0)
+                {
+                    int sword = Item.NewItem(target.getRect(), mod.ItemType("AnnealSword"), 1);
+                    if (Main.netMode == 1)
+                    {
+                        NetMessage.SendData(21, -1, -1, null, sword, 1f, 0f, 0f, 0, 0, 0);
+                    }
                     player.ClearBuff(mod.BuffType("AnnealBuff"));
                     player.GetModPlayer<SAOSwordsPlayer>(mod).Anneal = false;
-                    NPC.killCount[bannerID] -= NPC.killCount[bannerID]; // Resets the Blue Slime killCount to 0
                 }
             }
         }
     }
 }
+/* if (NPC.killCount[bannerID] >= 5 && target.type == NPCID.BlueSlime && target.life <= 0 && player.HasBuff(mod.BuffType("AnnealBuff")))
+ {
+     //Item.NewItem(target.getRect(), mod.ItemType("AnnealBlade"), 1);
+     //player.QuickSpawnItem(mod.ItemType("AnnealBlade"), 1);
+     int number = Item.NewItem(target.getRect(), mod.ItemType("AnnealSword"), 1);
+     if (Main.netMode == 1)
+     {
+         NetMessage.SendData(21, -1, -1, null, number, 1f, 0f, 0f, 0, 0, 0);
+     }
+     else
+     {
+         Item.NewItem(target.getRect(), mod.ItemType("AnnealBlade"), 1);
+     }
+     player.ClearBuff(mod.BuffType("AnnealBuff"));
+     player.GetModPlayer<SAOSwordsPlayer>(mod).Anneal = false;
+     NPC.killCount[bannerID] -= NPC.killCount[bannerID]; // Resets the Blue Slime killCount to 0; Server informs the client the real value and this wont work.
+     //I dunno, if you want it to actually work, you'd have to just have a ModPlayer int called something like SlimeKillsLeftUntilAnnealReward.
+     //Set that to 5 when the Buff is applied
+ }*/
 

@@ -81,6 +81,10 @@ namespace SAOSwords.NPCs.TownNPCs
             {
                 openShop = true;   //so when you click on buy button opens the shop
             }
+            else
+            {
+                bool openQuest = true;
+            }
         }
 
         public override void SetupShop(Chest shop, ref int nextSlot)
@@ -104,6 +108,11 @@ namespace SAOSwords.NPCs.TownNPCs
 
         public override string GetChat()       //Allows you to give this town NPC a chat message when a player talks to it.
         {
+            /*int player = Player.nameLen;
+            if (player >= 0 && Main.rand.Next(4) == 0)
+            {
+                return "Greetings " + player + ", today is a beatiful day, isn't it?";
+            }*/
             int nurseNPC = NPC.FindFirstNPC(NPCID.Nurse);
             if (nurseNPC >= 0 && Main.rand.Next(4) == 0)
             {

@@ -5,6 +5,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
+using Microsoft.Xna.Framework;
 using Terraria.World.Generation;
 using Microsoft.Xna.Framework;
 using Terraria.GameContent.Generation;
@@ -22,9 +23,11 @@ namespace SAOSwords
         public bool summonSpiritMinion = false;
         public bool Anneal = true;
         public bool zoneBiome = false;
+        public int SlimeKillsLeftUntilAnnealReward = 5;
 
         public override void ResetEffects()
         {
+            SlimeKillsLeftUntilAnnealReward = 0;
             Pet = false;
             summonSpiritMinion = false;
             Anneal = false;
