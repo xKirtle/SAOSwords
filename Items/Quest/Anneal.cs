@@ -67,14 +67,18 @@ namespace SAOSwords.Items.Quest
                 if (target.type == bSlime && target.life <= 0 && SlimeKillsLeftUntilAnnealReward >= 2 && player.HasBuff(mod.BuffType("AnnealBuff")))
                 {
                     SlimeKillsLeftUntilAnnealReward -= 1;
-                    Main.NewText("You still need to kill more " + SlimeKillsLeftUntilAnnealReward + " Blue Slimes!");
+                    Main.NewText("You still need to kill more " + SlimeKillsLeftUntilAnnealReward + " Blue Slimes!", 30, 144, 255);
                 }
-                else if (target.type == bSlime && player.HasBuff(mod.BuffType("AnnealBuff")) && SlimeKillsLeftUntilAnnealReward == 1)
+                else if (target.type == bSlime && target.life <= 0 && player.HasBuff(mod.BuffType("AnnealBuff")) && SlimeKillsLeftUntilAnnealReward == 1)
                 {
                     int sword = Item.NewItem(target.getRect(), mod.ItemType("AnnealSword"), 1);
-                    if (Main.netMode == 2)
+                    if (Main.netMode == 1)
                     {
-                        NetMessage.SendData(21, -1, -1, null, sword, 1f, 0f, 0f, 0, 0, 0);
+                        NetMessage.SendData(Terraria.ID.MessageID.SyncItem, -1, -1, null, sword);
+                    }
+                    else
+                    {
+                        Item.NewItem(target.getRect(), mod.ItemType("AnnealBlade"), 1);
                     }
                     Item.NewItem(target.getRect(), mod.ItemType("AnnealSword"), 1);
                     player.ClearBuff(mod.BuffType("AnnealBuff"));

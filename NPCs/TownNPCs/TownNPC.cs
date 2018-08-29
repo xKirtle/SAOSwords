@@ -21,17 +21,17 @@ namespace SAOSwords.NPCs.TownNPCs
         {
             npc.townNPC = true;
             npc.friendly = true;
-            npc.width = 18;
-            npc.height = 46;
+            npc.width = 30;
+            npc.height = 48;
             npc.aiStyle = 7;
             npc.defense = 25;
             npc.lifeMax = 250;
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
             npc.knockBackResist = 0.5f;
-            Main.npcFrameCount[npc.type] = 25;
-            NPCID.Sets.ExtraFramesCount[npc.type] = 9;
-            NPCID.Sets.AttackFrameCount[npc.type] = 4;
+            Main.npcFrameCount[npc.type] = 21;
+            NPCID.Sets.ExtraFramesCount[npc.type] = 5;
+            NPCID.Sets.AttackFrameCount[npc.type] = 2;
             NPCID.Sets.DangerDetectRange[npc.type] = 150;
             NPCID.Sets.AttackType[npc.type] = 3; //0 (throwing), 1 (shooting), or 2 (magic). 3 (melee) 
             NPCID.Sets.AttackTime[npc.type] = 20;
@@ -52,19 +52,19 @@ namespace SAOSwords.NPCs.TownNPCs
             switch (WorldGen.genRand.Next(6))
             {
                 case 0:
-                    return "Rick";
+                    return "Atria";
                 case 1:
-                    return "Denis";
+                    return "Mintaka";
                 case 2:
-                    return "Heisenberg";
+                    return "Nashira";
                 case 3:
-                    return "Jack";
+                    return "Rana";
                 case 4:
-                    return "Blue Magic";
+                    return "Talita";
                 case 5:
-                    return "Blue";
+                    return "Zosma";
                 default:
-                    return "Walter";
+                    return "Pleyona";
             }
         }
 
@@ -113,28 +113,26 @@ namespace SAOSwords.NPCs.TownNPCs
             {
                 return "Greetings " + player + ", today is a beatiful day, isn't it?";
             }*/
-            int nurseNPC = NPC.FindFirstNPC(NPCID.Nurse);
+            /*int nurseNPC = NPC.FindFirstNPC(NPCID.Nurse);
             if (nurseNPC >= 0 && Main.rand.Next(4) == 0)
             {
                 return "Isn't it a beautiful day? I wonder how's " + Main.npc[nurseNPC].GivenName + " today, sigh..";
-            }
+            }*/
             int wizardNPC = NPC.FindFirstNPC(NPCID.Wizard);   //this make so when this npc is close to Wizard
             if (wizardNPC >= 0 && Main.rand.Next(4) == 0)    //has 1 in 3 chance to show this message
             {
                 return "Yes " + Main.npc[wizardNPC].GivenName + " is a wizard, just like Harry!";
             }
-            int guideNPC = NPC.FindFirstNPC(NPCID.Guide); //this make so when this npc is close to the Guide
-            /*if (guideNPC >= 0 && Main.rand.Next(4) == 0) //has 1 in 3 chance to show this message
+            /*int guideNPC = NPC.FindFirstNPC(NPCID.Guide); //this make so when this npc is close to the Guide
+            if (guideNPC >= 0 && Main.rand.Next(4) == 0) //has 1 in 3 chance to show this message
             {
                 return "Sure you can ask " + Main.npc[guideNPC].GivenName + " how to make an Ironskin potion or you can buy it from me..hehehe.";
             }*/
-            switch (Main.rand.Next(3))    //this are the messages when you talk to the npc
+            switch (Main.rand.Next(2))    //this are the messages when you talk to the npc
             {
                 case 0:
                     return "What do you want?";
                 case 1:
-                    return "I'm the most serious guy here but don't tell " + Main.npc[guideNPC].GivenName + " that I said that!!";
-                case 2:
                     return "Would you do me a favor? I have a Quest for you.";
                 default:
                     return "Go kill Skeletron.";
@@ -144,7 +142,7 @@ namespace SAOSwords.NPCs.TownNPCs
 
         public override void TownNPCAttackStrength(ref int damage, ref float knockback)//  Allows you to determine the damage and knockback of this town NPC attack
         {
-            damage = 40;  //npc damage
+            damage = 20;  //npc damage
             knockback = 2f;   //npc knockback
         }
 
