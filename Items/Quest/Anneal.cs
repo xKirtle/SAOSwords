@@ -34,9 +34,19 @@ namespace SAOSwords.Items.Quest
         {
             if (player.whoAmI == Main.myPlayer && player.itemTime == 0)
             {
-                player.AddBuff(item.buffType, 999999, true);
-                Main.NewText("Kill 5 Slimes to earn your reward!", 0, 191, 255);
-                Main.NewText("P.S.: Slimes can be found across all biomes!", 144, 238, 144);
+                if (Main.netMode == 1)
+                {
+                    player.AddBuff(item.buffType, 999999, true);
+                    Main.NewText("Kill 5 Slimes to earn your reward!", 0, 191, 255);
+                    Main.NewText("P.S.: Slimes can be found across all biomes!", 144, 238, 144);
+                    Main.NewText("P.P.S.: THE QUEST MIGHT ONLY WORK FOR THE HOST!\nWAIT FOR THE NEXT PATCH", 255, 53, 53);
+                }
+                else
+                {
+                    player.AddBuff(item.buffType, 999999, true);
+                    Main.NewText("Kill 5 Slimes to earn your reward!", 0, 191, 255);
+                    Main.NewText("P.S.: Slimes can be found across all biomes!", 144, 238, 144);
+                }
             }
         }
 
@@ -74,7 +84,7 @@ namespace SAOSwords.Items.Quest
                     int sword = Item.NewItem(target.getRect(), mod.ItemType("AnnealSword"), 1);
                     if (Main.netMode == 1)
                     {
-                        NetMessage.SendData(Terraria.ID.MessageID.SyncItem, -1, -1, null, sword);
+                        NetMessage.SendData(Terraria.ID.MessageID.SyncItem, -1, -1, null, sword); // Not giving the item while in a multiplayer 
                     }
                     else
                     {
@@ -88,23 +98,23 @@ namespace SAOSwords.Items.Quest
 
                 }
 
-              /*if (NPC.killCount[bannerID] >= 5 && target.type == NPCID.BlueSlime && target.life <= 0 && player.HasBuff(mod.BuffType("AnnealBuff")))  // Thanks to jopojelly, Ivysaur97 and Dark;Light for the killCount[bannerID] solution (even though I won't use it)
-                {
-                // Item.NewItem(target.getRect(), mod.ItemType("AnnealBlade"), 1);
-                // player.QuickSpawnItem(mod.ItemType("AnnealBlade"), 1);
-                int number = Item.NewItem(target.getRect(), mod.ItemType("AnnealSword"), 1);
-                if (Main.netMode == 1)
-                {
-                    NetMessage.SendData(21, -1, -1, null, number, 1f, 0f, 0f, 0, 0, 0);
-                }
-                else
-                {
-                    Item.NewItem(target.getRect(), mod.ItemType("AnnealBlade"), 1);
-                }
-                player.ClearBuff(mod.BuffType("AnnealBuff"));
-                player.GetModPlayer<SAOSwordsPlayer>(mod).Anneal = false;
-                NPC.killCount[bannerID] -= NPC.killCount[bannerID]; // Resets the Blue Slime killCount to 0; Server informs the client the real value and this wont work.
-                }*/
+                /*if (NPC.killCount[bannerID] >= 5 && target.type == NPCID.BlueSlime && target.life <= 0 && player.HasBuff(mod.BuffType("AnnealBuff")))  // Thanks to jopojelly, Ivysaur97 and Dark;Light for the killCount[bannerID] solution (even though I won't use it)
+                  {
+                  // Item.NewItem(target.getRect(), mod.ItemType("AnnealBlade"), 1);
+                  // player.QuickSpawnItem(mod.ItemType("AnnealBlade"), 1);
+                  int number = Item.NewItem(target.getRect(), mod.ItemType("AnnealSword"), 1);
+                  if (Main.netMode == 1)
+                  {
+                      NetMessage.SendData(21, -1, -1, null, number, 1f, 0f, 0f, 0, 0, 0);
+                  }
+                  else
+                  {
+                      Item.NewItem(target.getRect(), mod.ItemType("AnnealBlade"), 1);
+                  }
+                  player.ClearBuff(mod.BuffType("AnnealBuff"));
+                  player.GetModPlayer<SAOSwordsPlayer>(mod).Anneal = false;
+                  NPC.killCount[bannerID] -= NPC.killCount[bannerID]; // Resets the Blue Slime killCount to 0; Server informs the client the real value and this wont work.
+                  }*/
             }
         }
     }

@@ -19,9 +19,9 @@ namespace SAOSwords.NPCs
 
 		public override void SetDefaults()
 		{
-			npc.lifeMax = 125;
-			npc.damage = 20;
-			npc.defense = 15;
+			npc.lifeMax = 50;
+			npc.damage = 7;
+			npc.defense = 8;
 			npc.knockBackResist = 0.3f;
 			npc.width = 96;
 			npc.height = 54;
