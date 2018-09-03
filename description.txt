@@ -5,8 +5,9 @@ DireWolf
 
 Everything is from the Anime SAO series.
 
-To do:
-  -Add particles and effects to the weapons.
+v0.3.3.2
+  -Changed a few recipes.
+  -Nerfed the DireWolf
 
 v0.3.3.1
   -Player will no longer start a fresh character without items.

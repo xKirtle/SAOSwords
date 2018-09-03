@@ -1,23 +1,22 @@
 ﻿using Terraria;
 using Terraria.ModLoader;
 using Terraria.ID;
-using Windows;
 
 namespace SAOSwords.Items
 {
-    public class PetItem : ModItem
+    public class YuiPet : ModItem
     {
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Yui");
-            Tooltip.SetDefault("Summons Yui \nNOT RELEASED YET SINCE SPRITE ISN'T MINE\nTHIS ITEM IS NOT CRAFTABLE");
+            Tooltip.SetDefault("Summons Yui \nDisclaimer: Sprite is not mine");
         }
 
         public override void SetDefaults()
         {
-            item.CloneDefaults(ItemID.WispinaBottle);
-            item.shoot = mod.ProjectileType("Pet");
-            item.buffType = mod.BuffType("PetBuff");
+            item.CloneDefaults(ItemID.ZephyrFish);
+            item.shoot = mod.ProjectileType("Yui");
+            item.buffType = mod.BuffType("YuiBuff");
         }
 
         public override void UseStyle(Player player)

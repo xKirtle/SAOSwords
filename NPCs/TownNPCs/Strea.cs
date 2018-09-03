@@ -91,6 +91,8 @@ namespace SAOSwords.NPCs.TownNPCs
         {
             shop.item[nextSlot].SetDefaults(mod.ItemType("Anneal"));
             nextSlot++;
+            shop.item[nextSlot].SetDefaults(mod.ItemType("Yui"));
+            nextSlot++;
             //------------------------------------------------------------------------------------------
             //shop.item[nextSlot].SetDefaults(ItemID.WormholePotion);
             //nextSlot++;

@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace SAOSwords.Buffs
 {
-    public class PetBuff : ModBuff
+    public class YuiBuff : ModBuff
     {
         public override void SetDefaults()
         {
@@ -18,11 +18,11 @@ namespace SAOSwords.Buffs
         public override void Update(Player player, ref int buffIndex)
         {
             player.buffTime[buffIndex] = 18000;                   // Sets the buff time to cover 24h
-            player.GetModPlayer<SAOSwordsPlayer>(mod).Pet = true; // Sets the pet to true;
-            bool petProjectileNotSpawned = player.ownedProjectileCounts[mod.ProjectileType("Pet")] <= 0; // Sets to true if count is less than or equal to 0
+            player.GetModPlayer<SAOSwordsPlayer>(mod).Yui = true; // Sets the pet to true;
+            bool petProjectileNotSpawned = player.ownedProjectileCounts[mod.ProjectileType("Yui")] <= 0; // Sets to true if count is less than or equal to 0
             if(petProjectileNotSpawned && player.whoAmI == Main.myPlayer)
             {
-                Projectile.NewProjectile(player.position.X + (float)(player.width / 2), player.position.Y + (float)(player.height / 2), 0f, 0f, mod.ProjectileType("Pet"), 0, 0f, player.whoAmI, 0f, 0f);
+                Projectile.NewProjectile(player.position.X + (float)(player.width / 2), player.position.Y + (float)(player.height / 2), 0f, 0f, mod.ProjectileType("Yui"), 0, 0f, player.whoAmI, 0f, 0f);
             }
         }
     }

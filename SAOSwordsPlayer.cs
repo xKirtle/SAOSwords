@@ -19,7 +19,7 @@ namespace SAOSwords
     {
         public bool ZoneExample = false;
         public int heroLives = 0;
-        public bool Pet = false;
+        public bool Yui = false;
         public bool summonSpiritMinion = false;
         public bool Anneal = true;
         public bool zoneBiome = false;
@@ -28,7 +28,7 @@ namespace SAOSwords
         public override void ResetEffects()
         {
             SlimeKillsLeftUntilAnnealReward = 0;
-            Pet = false;
+            Yui = false;
             summonSpiritMinion = false;
             Anneal = false;
         }

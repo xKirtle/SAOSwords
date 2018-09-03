@@ -1,10 +1,11 @@
-﻿using Terraria;
+﻿// Sprite is not mine
+using Terraria;
 using Terraria.ModLoader;
 using Terraria.ID;
 
 namespace SAOSwords.Projectiles
 {
-    public class Pet : ModProjectile
+    public class Yui : ModProjectile
     {
         public override void SetDefaults()
         {
@@ -27,9 +28,9 @@ namespace SAOSwords.Projectiles
             SAOSwordsPlayer modPlayer = player.GetModPlayer<SAOSwordsPlayer>(mod);
             if(player.dead)
             {
-                modPlayer.Pet = false;
+                modPlayer.Yui = false;
             }
-            if(modPlayer.Pet)
+            if(modPlayer.Yui)
             {
                 projectile.timeLeft = 2; //Remain at 2 while Pet == true;
             }

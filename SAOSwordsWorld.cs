@@ -17,7 +17,7 @@ namespace SAOSwords
     {
         public override void PostWorldGen()
         {
-            int num = NPC.NewNPC((Main.spawnTileX + 5) * 16, Main.spawnTileY * 16, mod.NPCType("TownNPC"), 0, 0f, 0f, 0f, 0f, 255);
+            int num = NPC.NewNPC((Main.spawnTileX + 5) * 16, Main.spawnTileY * 16, mod.NPCType("Strea"), 0, 0f, 0f, 0f, 0f, 255);
             Main.npc[num].homeTileX = Main.spawnTileX + 5;
             Main.npc[num].homeTileY = Main.spawnTileY;
             Main.npc[num].direction = 1;
