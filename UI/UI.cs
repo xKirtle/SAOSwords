@@ -7,54 +7,69 @@ using Terraria.UI;
 using System;
 using Terraria.ID;
 using System.Linq;
+using Terraria.Localization;
 
 namespace SAOSwords.UI
 {
+    // UIs visibility is toggled by typing "/coin" in chat. (See CoinCommand.cs)
+    // UI is a simple UI example showing how to use UIPanel, UIImageButton, and even a custom UIElement.
     class UI : UIState
     {
-        public UIPanel Panel;
+        public DragableUIPanel coinCounterPanel;
         public UIMoneyDisplay moneyDiplay;
         public static bool visible = false;
 
+        // In OnInitialize, we place various UIElements onto our UIState (this class).
+        // UIState classes have width and height equal to the full screen, because of this, usually we first define a UIElement that will act as the container for our UI.
+        // We then place various other UIElement onto that container UIElement positioned relative to the container UIElement.
         public override void OnInitialize()
         {
-            Panel = new UIPanel();
-            Panel.SetPadding(0);
-            Panel.Left.Set(400f, 0f);
-            Panel.Top.Set(100f, 0f);
-            Panel.Width.Set(170f, 0f);
-            Panel.Height.Set(70f, 0f);
-            Panel.BackgroundColor = new Color(73, 94, 171);
+            // Here we define our container UIElement. In DragableUIPanel.cs, you can see that DragableUIPanel is a UIPanel with a couple added features.
+            coinCounterPanel = new DragableUIPanel();
+            coinCounterPanel.SetPadding(0);
+            // We need to place this UIElement in relation to its Parent. Later we will be calling `base.Append(coinCounterPanel);`. 
+            // This means that this class, UI, will be our Parent. Since UI is a UIState, the Left and Top are relative to the top left of the screen.
+            coinCounterPanel.Left.Set(400f, 0f);
+            coinCounterPanel.Top.Set(100f, 0f);
+            coinCounterPanel.Width.Set(170f, 0f);
+            coinCounterPanel.Height.Set(70f, 0f);
+            coinCounterPanel.BackgroundColor = new Color(73, 94, 171);
 
-            Panel.OnMouseDown += new UIElement.MouseEvent(DragStart);
-            Panel.OnMouseUp += new UIElement.MouseEvent(DragEnd);
-
+            // Next, we create another UIElement that we will place. Since we will be calling `coinCounterPanel.Append(playButton);`, Left and Top are relative to the top left of the coinCounterPanel UIElement. 
+            // By properly nesting UIElements, we can position things relatively to each other easily.
             Texture2D buttonPlayTexture = ModLoader.GetTexture("Terraria/UI/ButtonPlay");
-            UIImageButton playButton = new UIImageButton(buttonPlayTexture);
+            UIHoverImageButton playButton = new UIHoverImageButton(buttonPlayTexture, "Reset Coins Per Minute Counter");
             playButton.Left.Set(110, 0f);
             playButton.Top.Set(10, 0f);
             playButton.Width.Set(22, 0f);
             playButton.Height.Set(22, 0f);
+            // UIHoverImageButton doesn't do anything when Clicked. Here we assign a method that we'd like to be called when the button is clicked.
             playButton.OnClick += new MouseEvent(PlayButtonClicked);
-            Panel.Append(playButton);
+            coinCounterPanel.Append(playButton);
 
             Texture2D buttonDeleteTexture = ModLoader.GetTexture("Terraria/UI/ButtonDelete");
-            UIImageButton closeButton = new UIImageButton(buttonDeleteTexture);
+            UIHoverImageButton closeButton = new UIHoverImageButton(buttonDeleteTexture, Language.GetTextValue("LegacyInterface.52")); // Localized text for "Close"
             closeButton.Left.Set(140, 0f);
             closeButton.Top.Set(10, 0f);
             closeButton.Width.Set(22, 0f);
             closeButton.Height.Set(22, 0f);
             closeButton.OnClick += new MouseEvent(CloseButtonClicked);
-            Panel.Append(closeButton);
+            coinCounterPanel.Append(closeButton);
 
+            // UIMoneyDisplay is a fairly complicated custom UIElement. UIMoneyDisplay handles drawing some text and coin textures.
+            // Organization is key to managing UI design. Making a contained UIElement like UIMoneyDisplay will make many things easier.
             moneyDiplay = new UIMoneyDisplay();
             moneyDiplay.Left.Set(15, 0f);
             moneyDiplay.Top.Set(20, 0f);
             moneyDiplay.Width.Set(100f, 0f);
             moneyDiplay.Height.Set(0, 1f);
-            Panel.Append(moneyDiplay);
+            coinCounterPanel.Append(moneyDiplay);
 
-            base.Append(Panel);
+            base.Append(coinCounterPanel);
+
+            // As a recap, UI is a UIState, meaning it covers the whole screen. We attach coinCounterPanel to UI some distance from the top left corner.
+            // We then place playButton, closeButton, and moneyDiplay onto coinCounterPanel so we can easily place these UIElements relative to coinCounterPanel.
+            // Since coinCounterPanel will move, this proper organization will move playButton, closeButton, and moneyDiplay properly when coinCounterPanel moves.
         }
 
         private void PlayButtonClicked(UIMouseEvent evt, UIElement listeningElement)
@@ -69,60 +84,29 @@ namespace SAOSwords.UI
             visible = false;
         }
 
-        Vector2 offset;
-        public bool dragging = false;
-        private void DragStart(UIMouseEvent evt, UIElement listeningElement)
-        {
-            offset = new Vector2(evt.MousePosition.X - Panel.Left.Pixels, evt.MousePosition.Y - Panel.Top.Pixels);
-            dragging = true;
-        }
-
-        private void DragEnd(UIMouseEvent evt, UIElement listeningElement)
-        {
-            Vector2 end = evt.MousePosition;
-            dragging = false;
-
-            Panel.Left.Set(end.X - offset.X, 0f);
-            Panel.Top.Set(end.Y - offset.Y, 0f);
-
-            Recalculate();
-        }
-
-        protected override void DrawSelf(SpriteBatch spriteBatch)
-        {
-            Vector2 MousePosition = new Vector2((float)Main.mouseX, (float)Main.mouseY);
-            if (Panel.ContainsPoint(MousePosition))
-            {
-                // Checking ContainsPoint and then setting mouseInterface to true is very common. This causes clicks to not cause the player to use current items. 
-                Main.LocalPlayer.mouseInterface = true;
-            }
-            if (dragging)
-            {
-                Panel.Left.Set(MousePosition.X - offset.X, 0f);
-                Panel.Top.Set(MousePosition.Y - offset.Y, 0f);
-                Recalculate();
-            }
-        }
-
-        public override void Update(GameTime gameTime)
-        {
-            base.Update(gameTime); // don't remove.
-
-            // Here we check if the Panel is outside the UIState rectangle. (in other words, the whole screen)
-            // By doing this and some simple math, we can snap the panel back on screen if the user resizes his window or otherwise changes resolution.
-            if (!Panel.GetDimensions().ToRectangle().Intersects(GetDimensions().ToRectangle()))
-            {
-                var parentSpace = GetDimensions().ToRectangle();
-                Panel.Left.Pixels = Utils.Clamp(Panel.Left.Pixels, 0, parentSpace.Right - Panel.Width.Pixels);
-                Panel.Top.Pixels = Utils.Clamp(Panel.Top.Pixels, 0, parentSpace.Bottom - Panel.Height.Pixels);
-                Panel.Recalculate();
-            }
-        }
-
         public void updateValue(int pickedUp)
         {
             moneyDiplay.coins += pickedUp;
             moneyDiplay.addCPM(pickedUp);
+        }
+    }
+
+    internal class UIHoverImageButton : UIImageButton
+    {
+        internal string hoverText;
+
+        public UIHoverImageButton(Texture2D texture, string hoverText) : base(texture)
+        {
+            this.hoverText = hoverText;
+        }
+
+        protected override void DrawSelf(SpriteBatch spriteBatch)
+        {
+            base.DrawSelf(spriteBatch);
+            if (IsMouseHovering)
+            {
+                Main.hoverItemName = hoverText;
+            }
         }
     }
 
@@ -185,7 +169,28 @@ namespace SAOSwords.UI
 
         protected override void DrawSelf(SpriteBatch spriteBatch)
         {
-            
+            CalculatedStyle innerDimensions = base.GetInnerDimensions();
+            Vector2 drawPos = new Vector2(innerDimensions.X + 5f, innerDimensions.Y + 30f);
+
+            float shopx = innerDimensions.X;
+            float shopy = innerDimensions.Y;
+
+            int[] coinsArray = Utils.CoinsSplit(coins);
+            for (int j = 0; j < 4; j++)
+            {
+                int num = (j == 0 && coinsArray[3 - j] > 99) ? -6 : 0;
+                spriteBatch.Draw(Main.itemTexture[74 - j], new Vector2(shopx + 11f + (float)(24 * j), shopy /*+ 75f*/), null, Color.White, 0f, Main.itemTexture[74 - j].Size() / 2f, 1f, SpriteEffects.None, 0f);
+                Utils.DrawBorderStringFourWay(spriteBatch, Main.fontItemStack, coinsArray[3 - j].ToString(), shopx + (float)(24 * j) + (float)num, shopy/* + 75f*/, Color.White, Color.Black, new Vector2(0.3f), 0.75f);
+            }
+
+            coinsArray = Utils.CoinsSplit(getCPM());
+            for (int j = 0; j < 4; j++)
+            {
+                int num = (j == 0 && coinsArray[3 - j] > 99) ? -6 : 0;
+                spriteBatch.Draw(Main.itemTexture[74 - j], new Vector2(shopx + 11f + (float)(24 * j), shopy + 25f), null, Color.White, 0f, Main.itemTexture[74 - j].Size() / 2f, 1f, SpriteEffects.None, 0f);
+                Utils.DrawBorderStringFourWay(spriteBatch, Main.fontItemStack, coinsArray[3 - j].ToString(), shopx + (float)(24 * j) + (float)num, shopy + 25f, Color.White, Color.Black, new Vector2(0.3f), 0.75f);
+            }
+            Utils.DrawBorderStringFourWay(spriteBatch, /*SAOSwords.exampleFont*/ Main.fontItemStack, "CPM", shopx + (float)(24 * 4), shopy + 25f, Color.White, Color.Black, new Vector2(0.3f), 0.75f);
         }
 
         internal void ResetCoins()
@@ -198,7 +203,29 @@ namespace SAOSwords.UI
         }
     }
 
-    public class MoneyCounterGlobalItem : GlobalItem
+    /*public class MoneyCounterGlobalItem : GlobalItem
     {
-    }
+        public override bool OnPickup(Item item, Player player)
+        {
+            if (item.type == ItemID.CopperCoin)
+            {
+                SAOSwords.instance.UI.updateValue(item.stack);
+                // We can cast mod to SAOSwords or just utilize SAOSwords.instance.
+                // (mod as SAOSwords).UI.updateValue(item.stack);
+            }
+            else if (item.type == ItemID.SilverCoin)
+            {
+                SAOSwords.instance.UI.updateValue(item.stack * 100);
+            }
+            else if (item.type == ItemID.GoldCoin)
+            {
+                SAOSwords.instance.UI.updateValue(item.stack * 10000);
+            }
+            else if (item.type == ItemID.PlatinumCoin)
+            {
+                SAOSwords.instance.UI.updateValue(item.stack * 1000000);
+            }
+            return base.OnPickup(item, player);
+        }
+    }*/
 }
