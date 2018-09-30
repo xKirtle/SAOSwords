@@ -8,15 +8,16 @@ namespace SAOSwords.Items
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Yui");
-            Tooltip.SetDefault("Summons Yui \nDisclaimer: Sprite is not mine");
+            DisplayName.SetDefault("Yui's Heart");
+            Tooltip.SetDefault("Summons a pet fairy");
         }
 
         public override void SetDefaults()
         {
-            item.CloneDefaults(ItemID.ZephyrFish);
+            item.CloneDefaults(ItemID.Nectar);
             item.shoot = mod.ProjectileType("Yui");
             item.buffType = mod.BuffType("YuiBuff");
+            item.value = 10000;
         }
 
         public override void UseStyle(Player player)
@@ -26,7 +27,7 @@ namespace SAOSwords.Items
                 player.AddBuff(item.buffType, 3600, true);
             }
         }
-
-        // No crafting cause I don't have a sprite of my own yet & not released yet
     }
 }
+
+// Disclaimer: Sprite used is not mine!

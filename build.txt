@@ -1,5 +1,5 @@
 author = Kirtle
-version = 0.3.3.2
+version = 0.3.3.3
 displayName = SAO Swords
 homepage = https://forums.terraria.org/index.php?threads/sao-swords.69444/#post-1586412
 buildIgnore = *.csproj, *.user, obj\*, bin\*, .vs\*

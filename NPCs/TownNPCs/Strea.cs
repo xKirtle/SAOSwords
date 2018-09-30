@@ -70,7 +70,7 @@ namespace SAOSwords.NPCs.TownNPCs
 
         public override void SetChatButtons(ref string button, ref string button2)  //Allows you to set the text for the buttons that appear on this town NPC's chat window. 
         {
-            button = "Free Quest";   //this defines the buy button name
+            button = "Open Store";   //this defines the buy button name
             //button2 = "Quest";
         }
 
@@ -91,7 +91,7 @@ namespace SAOSwords.NPCs.TownNPCs
         {
             shop.item[nextSlot].SetDefaults(mod.ItemType("Anneal"));
             nextSlot++;
-            shop.item[nextSlot].SetDefaults(mod.ItemType("Yui"));
+            shop.item[nextSlot].SetDefaults(mod.ItemType("YuiPet"));
             nextSlot++;
             //------------------------------------------------------------------------------------------
             //shop.item[nextSlot].SetDefaults(ItemID.WormholePotion);
@@ -153,7 +153,7 @@ namespace SAOSwords.NPCs.TownNPCs
             cooldown = 2;
             randExtraCooldown = 10;
         }
-        //------------------------------------This is an example of how to make the npc use a sward attack-------------------------------
+        //------------------------------------This is an  of how to make the npc use a sward attack-------------------------------
         public override void DrawTownAttackSwing(ref Texture2D item, ref int itemSize, ref float scale, ref Vector2 offset)//Allows you to customize how this town NPC's weapon is drawn when this NPC is swinging it (this NPC must have an attack type of 3). Item is the Texture2D instance of the item to be drawn (use Main.itemTexture[id of item]), itemSize is the width and height of the item's hitbox
         {
             scale = 1f;
@@ -167,7 +167,7 @@ namespace SAOSwords.NPCs.TownNPCs
             itemHeight = 41;
         }
 
-        //----------------------------------This is an example of how to make the npc use a gun and a projectile ----------------------------------
+        //----------------------------------This is an  of how to make the npc use a gun and a projectile ----------------------------------
         /*public override void DrawTownAttackGun(ref float scale, ref int item, ref int closeness) //Allows you to customize how this town NPC's weapon is drawn when this NPC is shooting (this NPC must have an attack type of 1). Scale is a multiplier for the item's drawing size, item is the ID of the item to be drawn, and closeness is how close the item should be drawn to the NPC.
           {
               scale = 1f;

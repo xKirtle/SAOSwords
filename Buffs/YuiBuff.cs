@@ -8,10 +8,11 @@ namespace SAOSwords.Buffs
         public override void SetDefaults()
         {
             DisplayName.SetDefault("Yui");
-            Description.SetDefault("A happy AI that follows you everywhere!");
+            Description.SetDefault("A friendly AI whose real name is Yui-MHCP001");
             Main.debuff[Type] = true;
             Main.buffNoSave[Type] = true;
             Main.buffNoTimeDisplay[Type] = true;
+            Main.vanityPet[Type] = true;
             canBeCleared = false;
         }
 

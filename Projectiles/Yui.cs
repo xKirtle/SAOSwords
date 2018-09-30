@@ -9,16 +9,16 @@ namespace SAOSwords.Projectiles
     {
         public override void SetDefaults()
         {
-            projectile.CloneDefaults(ProjectileID.ZephyrFish);
+            projectile.CloneDefaults(ProjectileID.BabyHornet);
             Main.projFrames[projectile.type] = 4;
             Main.projPet[projectile.type] = true;
-            aiType = ProjectileID.ZephyrFish;
+            aiType = ProjectileID.BabyHornet;
         }
 
         public override bool PreAI()
         {
             Player player = Main.player[projectile.owner];
-            player.zephyrfish = false; // Sets the default cloned pet to false;
+            player.hornet = false; // Sets the default cloned pet to false;
             return true;
         }
 
@@ -37,3 +37,5 @@ namespace SAOSwords.Projectiles
         }
     }
 }
+
+// Disclaimer: Sprite used is not mine!

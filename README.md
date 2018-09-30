@@ -2,14 +2,20 @@
 
 This mod is currently adding 10 swords: 
 Anneal Blade, Black Iron Great Sword, Dark Repulser, Elucidator, Excalibur, Gram, Ground Gorge, Guilty Thorn, Karakurenai, Lambent Light and Liberator. 
-And 1 Monster:
+1 Monster:
 DireWolf
+And 1 Vanity Pet:
+Yui
 
-Everything is from SAO series.
-Use this mod with Recipe Browser as I didn't setup a Wiki yet.
+Everything is from the Anime SAO series.
 
-To do:
-  -Add particles and effects to the weapons.
+v0.3.3.3
+  -Added Yui (Vanity Pet)
+  -Added an experimental Quest (Can be buggy)
+
+v0.3.3.2
+  -Changed a few recipes.
+  -Nerfed the DireWolf
 
 v0.3.3.1
   -Player will no longer start a fresh character without items.
@@ -45,4 +51,3 @@ V0.2 Changelog:
 
 V0.1 Changelog:
   -Added 2 Swords: Elucidator and Lambent Light.
-

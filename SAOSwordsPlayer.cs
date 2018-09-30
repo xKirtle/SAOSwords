@@ -17,7 +17,7 @@ namespace SAOSwords
 {
     public class SAOSwordsPlayer : ModPlayer
     {
-        public bool ZoneExample = false;
+        public bool Zone = false;
         public int heroLives = 0;
         public bool Yui = false;
         public bool summonSpiritMinion = false;
