@@ -29,19 +29,20 @@ namespace SAOSwords.Items.Quest
             item.buyOnce = true;
         }
 
+
         public override void UseStyle(Player player)
         {
             if (player.whoAmI == Main.myPlayer && player.itemTime == 0)
             {
                     player.AddBuff(item.buffType, 999999, true);
-                    Main.NewText("Kill 5 Slimes to earn your reward!", 0, 191, 255);
+                    Main.NewText("Kill 5 Slimes with a sword to earn your reward!", 0, 191, 255);
                     Main.NewText("P.S.: Slimes can be found across all biomes!", 144, 238, 144);
             }
         }
 
         public class QuestSlime : GlobalItem // Makes so the code below works for all melee weapons
         {
-            public override bool InstancePerEntity // Requirement for the next int (for some reason that is beyond my understandment)
+            public override bool InstancePerEntity // Requirement for the next int (for a reason that is beyond my understandment)
             {
                 get
                 {
@@ -49,7 +50,7 @@ namespace SAOSwords.Items.Quest
                 }
             }
 
-            public override bool CloneNewInstances // Requirement for the next int (for some reason that is beyond my understandment)
+            public override bool CloneNewInstances // Requirement for the next int (for a reason that is beyond my understandment)
             {
                 get
                 {
