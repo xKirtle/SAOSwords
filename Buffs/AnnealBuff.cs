@@ -14,7 +14,7 @@ namespace SAOSwords.Buffs
         public override void SetDefaults()
         {
             DisplayName.SetDefault("Quest");
-            Description.SetDefault("Kill 5 Blue Slimes!");
+            Description.SetDefault("Kill 5 Slimes!");
             Main.debuff[Type] = true;
             Main.buffNoSave[Type] = true;
             Main.buffNoTimeDisplay[Type] = true;

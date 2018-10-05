@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Terraria.ID;
+﻿using Terraria.ID;
 using Terraria;
 using Terraria.ModLoader;
-using SAOSwords.Items.Weapons.Swords;
-using SAOSwords.Items.Quest;
 
 namespace SAOSwords.NPCs.TownNPCs
 {
@@ -33,11 +27,11 @@ namespace SAOSwords.NPCs.TownNPCs
             NPCID.Sets.ExtraFramesCount[npc.type] = 5;
             NPCID.Sets.AttackFrameCount[npc.type] = 2;
             NPCID.Sets.DangerDetectRange[npc.type] = 150;
-            NPCID.Sets.AttackType[npc.type] = 3; //0 (throwing), 1 (shooting), or 2 (magic). 3 (melee) 
-            NPCID.Sets.AttackTime[npc.type] = 20;
-            NPCID.Sets.AttackAverageChance[npc.type] = 10;
+            NPCID.Sets.AttackType[npc.type] = 0; //0 (throwing), 1 (shooting), or 2 (magic). 3 (melee) 
+            NPCID.Sets.AttackTime[npc.type] = 10;
+            NPCID.Sets.AttackAverageChance[npc.type] = 20;
             NPCID.Sets.HatOffsetY[npc.type] = 4;
-            animationType = NPCID.Guide;
+            animationType = NPCID.Nurse;
         }
         public override bool CanTownNPCSpawn(int numTownNPCs, int money)
         {
@@ -114,13 +108,13 @@ namespace SAOSwords.NPCs.TownNPCs
             if (player >= 0 && Main.rand.Next(4) == 0)
             {
                 return "Greetings " + player + ", today is a beatiful day, isn't it?";
-            }*/
-            /*int nurseNPC = NPC.FindFirstNPC(NPCID.Nurse);
+            }
+            int nurseNPC = NPC.FindFirstNPC(NPCID.Nurse);
             if (nurseNPC >= 0 && Main.rand.Next(4) == 0)
             {
                 return "Isn't it a beautiful day? I wonder how's " + Main.npc[nurseNPC].GivenName + " today, sigh..";
             }*/
-            int wizardNPC = NPC.FindFirstNPC(NPCID.Wizard);   //this make so when this npc is close to Wizard
+            int wizardNPC = NPC.FindFirstNPC(NPCID.Wizard);
             if (wizardNPC >= 0 && Main.rand.Next(4) == 0)    //has 1 in 3 chance to show this message
             {
                 return "Yes " + Main.npc[wizardNPC].GivenName + " is a wizard, just like Harry!";
@@ -133,7 +127,7 @@ namespace SAOSwords.NPCs.TownNPCs
             switch (Main.rand.Next(2))    //this are the messages when you talk to the npc
             {
                 case 0:
-                    return "What do you want?";
+                    return "How are you liking it here in Aincrad?";
                 case 1:
                     return "Would you do me a favor? I have a Quest for you.";
                 default:
@@ -150,10 +144,11 @@ namespace SAOSwords.NPCs.TownNPCs
 
         public override void TownNPCAttackCooldown(ref int cooldown, ref int randExtraCooldown)  //Allows you to determine the cooldown between each of this town NPC's attack. The cooldown will be a number greater than or equal to the first parameter, and less then the sum of the two parameters.
         {
-            cooldown = 2;
-            randExtraCooldown = 10;
+            cooldown = 3;
+            randExtraCooldown = 2;
         }
         //------------------------------------This is an  of how to make the npc use a sward attack-------------------------------
+        /*
         public override void DrawTownAttackSwing(ref Texture2D item, ref int itemSize, ref float scale, ref Vector2 offset)//Allows you to customize how this town NPC's weapon is drawn when this NPC is swinging it (this NPC must have an attack type of 3). Item is the Texture2D instance of the item to be drawn (use Main.itemTexture[id of item]), itemSize is the width and height of the item's hitbox
         {
             scale = 1f;
@@ -165,27 +160,27 @@ namespace SAOSwords.NPCs.TownNPCs
         {
             itemWidth = 45;
             itemHeight = 41;
-        }
+        }      */
 
         //----------------------------------This is an  of how to make the npc use a gun and a projectile ----------------------------------
-        /*public override void DrawTownAttackGun(ref float scale, ref int item, ref int closeness) //Allows you to customize how this town NPC's weapon is drawn when this NPC is shooting (this NPC must have an attack type of 1). Scale is a multiplier for the item's drawing size, item is the ID of the item to be drawn, and closeness is how close the item should be drawn to the NPC.
-          {
-              scale = 1f;
-              item = mod.ItemType("GunName");  
-              closeness = 20;
-          }
-          public override void TownNPCAttackProj(ref int projType, ref int attackDelay)//Allows you to determine the projectile type of this town NPC's attack, and how long it takes for the projectile to actually appear
-          {
-              projType = ProjectileID.CrystalBullet;
-              attackDelay = 1;
-          }
+        public override void DrawTownAttackGun(ref float scale, ref int item, ref int closeness) //Allows you to customize how this town NPC's weapon is drawn when this NPC is shooting (this NPC must have an attack type of 1). Scale is a multiplier for the item's drawing size, item is the ID of the item to be drawn, and closeness is how close the item should be drawn to the NPC.
+        {
+            scale = 1f;
+            item = ItemID.ThrowingKnife;
+            closeness = 0;
+        }
+        public override void TownNPCAttackProj(ref int projType, ref int attackDelay)//Allows you to determine the projectile type of this town NPC's attack, and how long it takes for the projectile to actually appear
+        {
+            projType = ProjectileID.ThrowingKnife;
+            attackDelay = 1;
+        }
 
-          public override void TownNPCAttackProjSpeed(ref float multiplier, ref float gravityCorrection, ref float randomOffset)//Allows you to determine the speed at which this town NPC throws a projectile when it attacks. Multiplier is the speed of the projectile, gravityCorrection is how much extra the projectile gets thrown upwards, and randomOffset allows you to randomize the projectile's velocity in a square centered around the original velocity
-          {
-              multiplier = 7f;
-             // randomOffset = 4f;
+        public override void TownNPCAttackProjSpeed(ref float multiplier, ref float gravityCorrection, ref float randomOffset)//Allows you to determine the speed at which this town NPC throws a projectile when it attacks. Multiplier is the speed of the projectile, gravityCorrection is how much extra the projectile gets thrown upwards, and randomOffset allows you to randomize the projectile's velocity in a square centered around the original velocity
+        {
+            multiplier = 7f;
+            randomOffset = 2f;
 
-          }   */
+        }
 
     }
 }
