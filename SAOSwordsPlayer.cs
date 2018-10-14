@@ -24,6 +24,7 @@ namespace SAOSwords
         public bool Anneal = true;
         public bool zoneBiome = false;
         public int SlimeKillsLeftUntilAnnealReward = 5;
+        //public int testreward = 5;
 
         public override void ResetEffects()
         {
@@ -31,6 +32,7 @@ namespace SAOSwords
             Yui = false;
             summonSpiritMinion = false;
             Anneal = false;
+            //testreward = 0;
         }
 
         public override void SetupStartInventory(IList<Item> items)
